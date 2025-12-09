@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
-import { getUsers, saveUser } from '@/src/libs/db';
+import { getUsers, saveUser } from '@/src/libs/conexao-db';
 
 
 const registerSchema = z.object({

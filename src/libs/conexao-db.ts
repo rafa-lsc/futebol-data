@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const filePath = path.join(process.cwd(), 'data', 'users.json');
+const filePath = path.join(process.cwd(), 'db', 'usuarios-db.json');
 
 
 export function ensureDataFile() {
