@@ -16,7 +16,6 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
@@ -30,10 +29,13 @@ export default function Login() {
         throw new Error(data.error || 'Falha no login');
       }
 
-      router.push('/palpites');
-      router.refresh(); 
+
+      console.log("Login sucesso! Redirecionando...");
+     
+      window.location.href = '/palpites';
 
     } catch (err: any) {
+      console.error("Erro no catch:", err); 
       setError(err.message);
     }
   };

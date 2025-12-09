@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1765304378403",
+    "name": "Teste",
+    "email": "teste@gmail.com",
+    "password": "$2b$10$6rRaT9bwiyfvuiZk85PFJOk.ky/MUwWXME/53.eI.FN1o7p6RmwSy"
+  },
+  {
+    "id": "1765304587594",
+    "name": "teste2",
+    "email": "erro@gmail.com",
+    "password": "$2b$10$Bj/gx67sF9RXe5cUPWzmWeiYxF4uBwnBqOif/cC4JOq22PnPvikvS"
+  },
+  {
+    "id": "1765304824940",
+    "name": "testeee",
+    "email": "testee@gmail.com",
+    "password": "$2b$10$hTYKSZl4jG65H0eg5YnEc.pXetg.yVBz4Dd8SNweZDmEjRrIJ5SCq"
+  },
+  {
+    "id": "1765305402804",
+    "name": "agora vai",
+    "email": "agora@gmail.com",
+    "password": "$2b$10$lJ4JhVRRp9IiKe0xmM0mj.ZPKs1sRHlziADTLJFS7Nk3Ioz5HQI/a"
+  }
+]
