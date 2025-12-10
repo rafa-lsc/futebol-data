@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="w-full flex justify-between px-12 py-6 box-border bg-black/75 text-foreground border border-black">
+    <header className="w-full flex justify-between px-12 py-6 box-border bg-black text-foreground border border-black">
       <Link href={`/`} className="text-lg font-bold text-primary">
         <img src="logo-cs2.png" alt="logo" className="w-24 object-contain" />
       </Link>
