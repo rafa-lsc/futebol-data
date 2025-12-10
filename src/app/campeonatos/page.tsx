@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/src/components/Header/Header";
+import PartAntigas from "@/src/components/PartAntigas";
 import { useState } from "react";
 
 const API_TOKEN = "live_1464f8a638cb9f7b0b2b4d3fdd2e9e";
@@ -10,6 +11,7 @@ export default function Campeonatos() {
   const [loading, setLoading] = useState(false); //saber se requisicao esta em andamento
   const [error, setError] = useState(""); //saber se requisicao falhou
   const [secaoAtiva, setSecaoAtiva] = useState(""); //determinar qual esta ativo
+  const [partidas, setPartidas] = useState([]); //armazenar os dados das partidas/ rodadas
 
   const handleFetchArtilharia = async () => {
     setLoading(true);
@@ -26,9 +28,29 @@ export default function Campeonatos() {
       const dados = await res.json();
       setArtilharia(dados);
       setSecaoAtiva("artilharia");
-      console.log(artilharia);
     } catch (err) {
       setError("Falha ao carregar a artilharia");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFetchPartidas = async () => {
+    setLoading(true);
+    const urlPart = "https://api.api-futebol.com.br/v1/campeonatos/20/partidas";
+
+    try {
+      const res = await fetch(urlPart, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+        },
+      });
+      const dados = await res.json();
+      setPartidas(dados.partidas["primeira-fase"]["6a-rodada"]);
+      setSecaoAtiva("partidas");
+    } catch (err) {
+      setError("Falha ao carregar as partidas");
     } finally {
       setLoading(false);
     }
@@ -49,7 +71,10 @@ export default function Campeonatos() {
             🦶 Artilharia
           </button>
 
-          <button className="text-xl text-white cursor-pointer bg-blue-500 rounded-lg py-1 px-2">
+          <button
+            onClick={handleFetchPartidas}
+            className="text-xl text-white cursor-pointer bg-blue-500 rounded-lg py-1 px-2"
+          >
             ⚽ Partidas
           </button>
         </div>
@@ -58,6 +83,8 @@ export default function Campeonatos() {
         {loading && <p className="text-white">Carregando...</p>}
         {/* TODO: erro */}
         {/* resultado */}
+
+        {/* artilharia */}
         {secaoAtiva === "artilharia" &&
           artilharia !== "" &&
           Array.isArray(artilharia) && (
@@ -76,6 +103,43 @@ export default function Campeonatos() {
               ))}
             </div>
           )}
+
+        {/* rodadas */}
+        {secaoAtiva === "partidas" && partidas.length !== 0 && (
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-white text-2xl font-bold">
+              Partidas de ontem (09/12/2025)
+            </h2>
+            <div className="grid grid-cols-3">
+              <PartAntigas
+                timeA={partidas[3].time_mandante.nome_popular}
+                timeB={partidas[3].time_visitante.nome_popular}
+              />
+              <PartAntigas
+                timeA={partidas[4].time_mandante.nome_popular}
+                timeB={partidas[4].time_visitante.nome_popular}
+              />
+              <PartAntigas
+                timeA={partidas[5].time_mandante.nome_popular}
+                timeB={partidas[5].time_visitante.nome_popular}
+              />
+              <PartAntigas
+                timeA={partidas[6].time_mandante.nome_popular}
+                timeB={partidas[6].time_visitante.nome_popular}
+              />
+              <PartAntigas
+                timeA={partidas[7].time_mandante.nome_popular}
+                timeB={partidas[7].time_visitante.nome_popular}
+              />
+              <PartAntigas
+                timeA={partidas[8].time_mandante.nome_popular}
+                timeB={partidas[8].time_visitante.nome_popular}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* tabela */}
       </main>
     </div>
   );
