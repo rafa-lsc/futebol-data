@@ -12,6 +12,7 @@ export default function Campeonatos() {
   const [error, setError] = useState(""); //saber se requisicao falhou
   const [secaoAtiva, setSecaoAtiva] = useState(""); //determinar qual esta ativo
   const [partidas, setPartidas] = useState([]); //armazenar os dados das partidas/ rodadas
+  const [tabela, setTabela] = useState(""); //armazenar os dados das tabelas
 
   const handleFetchArtilharia = async () => {
     setLoading(true);
@@ -56,6 +57,28 @@ export default function Campeonatos() {
     }
   };
 
+  const handleFetchTabela = async () => {
+    setLoading(true);
+    const urlPart = "https://api.api-futebol.com.br/v1/campeonatos/20/tabela";
+
+    try {
+      const res = await fetch(urlPart, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+        },
+      });
+      const dados = await res.json();
+      setTabela(dados);
+      setSecaoAtiva("tabela");
+      console.log(tabela);
+    } catch (err) {
+      setError("Falha ao carregar as partidas");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-900">
       <Header />
@@ -76,6 +99,13 @@ export default function Campeonatos() {
             className="text-xl text-white cursor-pointer bg-blue-500 rounded-lg py-1 px-2"
           >
             ⚽ Partidas
+          </button>
+
+          <button
+            onClick={handleFetchTabela}
+            className="text-xl text-white cursor-pointer bg-blue-500 rounded-lg py-1 px-2"
+          >
+            🔢 Tabela
           </button>
         </div>
         {/* exibir os resultados */}
@@ -140,6 +170,25 @@ export default function Campeonatos() {
         )}
 
         {/* tabela */}
+        {secaoAtiva === "tabela" && tabela !== "" && (
+          <div>
+            <h2 className="text-center text-white font-bold py-3 text-2xl">
+              TABELA CLASSIFICAÇÃO
+            </h2>
+            <div className="grid grid-cols-3 text-xl text-blue-500">
+              <p>Nome Time</p>
+              <p>Posição</p>
+              <p>Pontos</p>
+            </div>
+            {tabela.map((time) => (
+              <div key={time.posicao} className="grid grid-cols-3 bg-gray-700 text-white border border-gray-900">
+                <p>{time.time.nome_popular}</p>
+                <p>{time.posicao}</p>
+                <p>{time.pontos}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );
