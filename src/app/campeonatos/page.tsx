@@ -81,7 +81,6 @@ export default function Campeonatos() {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      <Header />
       <main className="flex flex-col items-center py-2 flex-grow gap-4">
         <h1 className="text-5xl text-white font-bold">
           Informações - Champions League

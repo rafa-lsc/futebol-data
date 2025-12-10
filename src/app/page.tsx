@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <>
     <section className="relative w-full min-h-screen bg-[url('/arena-bg.png')] bg-cover bg-center bg-no-repeat">
-      <Header />
 
       <div className="flex flex-col items-center justify-center gap-6 pt-60">
         <h1 className="text-5xl font-poppins font-bold text-white">Seu Portal oficial de Futebol</h1>
