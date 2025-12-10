@@ -59,10 +59,10 @@ export default function Campeonatos() {
 
   const handleFetchTabela = async () => {
     setLoading(true);
-    const urlPart = "https://api.api-futebol.com.br/v1/campeonatos/20/tabela";
+    const urlTabela = "https://api.api-futebol.com.br/v1/campeonatos/20/tabela";
 
     try {
-      const res = await fetch(urlPart, {
+      const res = await fetch(urlTabela, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
