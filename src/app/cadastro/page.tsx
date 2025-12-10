@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import Header from '@/src/components/Header/Header';
+
 
 export default function Cadastro() {
   const router = useRouter();
@@ -54,7 +54,6 @@ export default function Cadastro() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Header />
       
       <main className="flex flex-col items-center justify-center pt-24 px-4">
         <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-700">

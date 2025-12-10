@@ -47,7 +47,7 @@ export default function Palpites() {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      <HeaderLogado />
+
       <main className="flex-grow">
         <div className="flex items-center justify-center py-4">
           <button
