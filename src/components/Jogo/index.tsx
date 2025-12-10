@@ -8,7 +8,7 @@ interface JogoProps{
 
 export default function Jogo({nomeCampeonato, timeA, timeB, golsA, golsB}: JogoProps) {
   return (
-    <div className="bg-gray-600 flex flex-col gap-5 rounded-lg w-1/3 py-2 m-5 justify-center items-center">
+    <div className="bg-gray-600 flex flex-col gap-5 rounded-lg w-[75%] py-2 m-5 justify-center items-center">
       {/* nome do campeonato */}
       <div className="w-1/1 border-b border-gray-900 py-2">
         <h2 className="text-xl text-white font-bold text-center">
@@ -32,7 +32,7 @@ export default function Jogo({nomeCampeonato, timeA, timeB, golsA, golsB}: JogoP
           </div>
         </div>
 
-        {/* botões - CRUD */}
+        {/* 
         <div className="flex space-between items-center justify-center gap-5 text-white">
           <button className="bg-blue-700 cursor-pointer rounded-lg py-2 px-1 hover:bg-blue-500 transition-colors">
             ✏️ Editar Palpite
@@ -42,6 +42,8 @@ export default function Jogo({nomeCampeonato, timeA, timeB, golsA, golsB}: JogoP
             🗑️ Excluir Palpite
           </button>
         </div>
+        */}
+
       </div>
     </div>
   );
